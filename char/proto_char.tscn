@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://durrgqvx088gf"]
+
+[ext_resource type="Script" path="res://char/proto_char.gd" id="1_wbe7g"]
+[ext_resource type="Texture2D" uid="uid://r7jltp8e2ytc" path="res://char/capsule_Background_Removed.png" id="2_xpm66"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ernw0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_536hn"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_md43n"]
+font_size = 50
+
+[node name="ProtoChar" type="CharacterBody2D"]
+script = ExtResource("1_wbe7g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ernw0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CapsuleBackgroundRemoved" type="Sprite2D" parent="."]
+position = Vector2(-0.25, 0)
+scale = Vector2(0.2475, 0.2225)
+texture = ExtResource("2_xpm66")
+
+[node name="StandardNumber" type="Label" parent="."]
+offset_left = -343.0
+offset_top = -523.0
+offset_right = -277.0
+offset_bottom = -463.0
+text = "1"
+label_settings = SubResource("LabelSettings_536hn")
+
+[node name="HighJumpNumber" type="Label" parent="."]
+visible = false
+offset_left = -254.0
+offset_top = -525.0
+offset_right = -157.0
+offset_bottom = -416.0
+text = "0"
+label_settings = SubResource("LabelSettings_md43n")

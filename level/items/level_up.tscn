@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3unisjc1mbkd"]
+
+[ext_resource type="Texture2D" uid="uid://ca150qh8cvsvu" path="res://level/items/level_up.png" id="1_b4tha"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pdpqg"]
+radius = 30.1496
+
+[node name="LevelUp" type="Area2D"]
+
+[node name="LevelUp" type="Sprite2D" parent="."]
+position = Vector2(3.8147e-06, -2)
+scale = Vector2(0.38, 0.36)
+texture = ExtResource("1_b4tha")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pdpqg")
