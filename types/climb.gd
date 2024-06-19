@@ -5,5 +5,6 @@ class_name Climb
 enum PlatformType {
 	NOTHING,
 	STANDARD,
-	HIGH_JUMP
+	HIGH_JUMP,
+	BREAKABLE
 }

@@ -33,10 +33,17 @@ text = "1"
 label_settings = SubResource("LabelSettings_536hn")
 
 [node name="HighJumpNumber" type="Label" parent="."]
-visible = false
 offset_left = -254.0
 offset_top = -525.0
 offset_right = -157.0
+offset_bottom = -416.0
+text = "0"
+label_settings = SubResource("LabelSettings_md43n")
+
+[node name="BreakableNumber" type="Label" parent="."]
+offset_left = -170.0
+offset_top = -525.0
+offset_right = -73.0
 offset_bottom = -416.0
 text = "0"
 label_settings = SubResource("LabelSettings_md43n")

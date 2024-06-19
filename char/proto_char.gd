@@ -9,13 +9,13 @@ signal recall_platform_attempted()
 @onready var _type_standing_on = Climb.PlatformType.STANDARD
 
 
-
-
 func _cycle_platform_type():
 	match _current_selected_platform_type:
 		Climb.PlatformType.STANDARD:
 			_current_selected_platform_type = Climb.PlatformType.HIGH_JUMP
 		Climb.PlatformType.HIGH_JUMP:
+			_current_selected_platform_type = Climb.PlatformType.BREAKABLE
+		Climb.PlatformType.BREAKABLE:
 			_current_selected_platform_type = Climb.PlatformType.STANDARD
 
 
