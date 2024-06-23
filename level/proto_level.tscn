@@ -44,6 +44,8 @@ position = Vector2(-456, -97)
 scale = Vector2(0.224609, 0.192383)
 texture = ExtResource("5_1248s")
 
+[node name="CameraLevel" type="Camera2D" parent="."]
+
 [connection signal="recall_platform_attempted" from="ProtoChar" to="." method="_on_proto_char_recall_platform_attempted"]
 [connection signal="set_platform_attempted" from="ProtoChar" to="." method="_on_proto_char_set_platform_attempted"]
 [connection signal="body_entered" from="LevelUp" to="." method="_on_level_up_body_entered"]
