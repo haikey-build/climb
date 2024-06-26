@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://dt8hnpnr7641e"]
+[gd_scene load_steps=5 format=3 uid="uid://dt8hnpnr7641e"]
 
-[ext_resource type="PackedScene" uid="uid://durrgqvx088gf" path="res://char/proto_char.tscn" id="1_ng856"]
 [ext_resource type="Script" path="res://level/proto_level.gd" id="1_olv6m"]
 [ext_resource type="PackedScene" uid="uid://c02jydykctbe" path="res://level/blocks/basic_block.tscn" id="3_oqne8"]
 [ext_resource type="PackedScene" uid="uid://b3unisjc1mbkd" path="res://level/items/level_up.tscn" id="4_tk5as"]
@@ -8,9 +7,6 @@
 
 [node name="ProtoLevel" type="Node2D"]
 script = ExtResource("1_olv6m")
-
-[node name="ProtoChar" parent="." instance=ExtResource("1_ng856")]
-position = Vector2(-176, -54)
 
 [node name="BasicBlock" parent="." instance=ExtResource("3_oqne8")]
 position = Vector2(-172, 19)
@@ -25,8 +21,8 @@ position = Vector2(-332, -277)
 scale = Vector2(3.315, 36.07)
 
 [node name="BasicBlock4" parent="." instance=ExtResource("3_oqne8")]
-position = Vector2(1570, 345)
-scale = Vector2(12.629, 1.135)
+position = Vector2(9, 166)
+scale = Vector2(12.76, 1.47)
 
 [node name="BasicBlock5" parent="." instance=ExtResource("3_oqne8")]
 position = Vector2(-491, -44)
@@ -45,7 +41,7 @@ scale = Vector2(0.224609, 0.192383)
 texture = ExtResource("5_1248s")
 
 [node name="CameraLevel" type="Camera2D" parent="."]
+position = Vector2(40, -198)
+zoom = Vector2(0.67, 0.67)
 
-[connection signal="recall_platform_attempted" from="ProtoChar" to="." method="_on_proto_char_recall_platform_attempted"]
-[connection signal="set_platform_attempted" from="ProtoChar" to="." method="_on_proto_char_set_platform_attempted"]
 [connection signal="body_entered" from="LevelUp" to="." method="_on_level_up_body_entered"]

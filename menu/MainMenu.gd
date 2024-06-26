@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var level_1 = preload("res://level/proto_level.tscn")
+@onready var level_1 = preload("res://menu/menu_char_select.tscn")
 @onready var camera = $CameraMenu
 
 

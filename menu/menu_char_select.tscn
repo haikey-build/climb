@@ -1,3 +1,31 @@
-[gd_scene format=3 uid="uid://b4lmpwhgy78x4"]
+[gd_scene load_steps=2 format=3 uid="uid://b4lmpwhgy78x4"]
+
+[ext_resource type="Script" path="res://menu/menu_char_select.gd" id="1_72r7o"]
 
 [node name="MenuCharSelect" type="Node2D"]
+script = ExtResource("1_72r7o")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -217.0
+offset_top = 137.0
+offset_right = -160.0
+offset_bottom = 198.0
+text = "1"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = -30.0
+offset_top = 148.0
+offset_right = 27.0
+offset_bottom = 209.0
+text = "2"
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 188.0
+offset_top = 140.0
+offset_right = 245.0
+offset_bottom = 201.0
+text = "3"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Button2" to="." method="_on_button_2_button_down"]
+[connection signal="button_down" from="Button3" to="." method="_on_button_3_button_down"]

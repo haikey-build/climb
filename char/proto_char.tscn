@@ -18,6 +18,7 @@ script = ExtResource("1_wbe7g")
 shape = SubResource("CapsuleShape2D_ernw0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
 
 [node name="CapsuleBackgroundRemoved" type="Sprite2D" parent="."]
 position = Vector2(-0.25, 0)

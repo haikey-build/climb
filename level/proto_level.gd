@@ -1,6 +1,9 @@
+class_name ProtoLevel
 extends Node2D
 
 var _platform_scene = preload("res://level/blocks/basic_block.tscn")
+
+@onready var _level_camera = $CameraLevel
 
 @onready var _placed_platforms = []
 
@@ -16,8 +19,12 @@ var _platform_scene = preload("res://level/blocks/basic_block.tscn")
 	Climb.PlatformType.BREAKABLE: 1,
 }
 
+func get_level_camera():
+	return _level_camera
+
 func _ready():
-	_update_inventory_HUD_all()
+	pass
+	#_update_inventory_HUD_all()
 
 func _process(delta):
 	if Input.is_action_just_pressed("quit"):
@@ -70,3 +77,9 @@ func _update_inventory_HUD_all():
 
 func _update_inventory_HUD(type):
 	_inventory_HUD[type].text = str(_inventory[type])
+
+
+#func _set_char_camera():
+	#_level_camera.enabled = false
+	#_char_camera.enabled = true
+	#_char_camera.make_current()
