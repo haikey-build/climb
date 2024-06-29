@@ -6,7 +6,7 @@ uniform float offset_multipliers[5]; // New uniform for offset multipliers
 void fragment() {
     float running_a = 0.0;
     float running_b = 0.0;
-    float y = 1.0 - UV.y;
+    float y = 1.0 - UV.y * 2.0;
 
     for (int i = 0; i < 5; i++) {
         if (y > running_a) {

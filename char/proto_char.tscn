@@ -26,6 +26,7 @@ scale = Vector2(0.2475, 0.2225)
 texture = ExtResource("2_xpm66")
 
 [node name="StandardNumber" type="Label" parent="."]
+visible = false
 offset_left = -343.0
 offset_top = -523.0
 offset_right = -277.0
@@ -34,6 +35,7 @@ text = "1"
 label_settings = SubResource("LabelSettings_536hn")
 
 [node name="HighJumpNumber" type="Label" parent="."]
+visible = false
 offset_left = -254.0
 offset_top = -525.0
 offset_right = -157.0
@@ -42,6 +44,7 @@ text = "0"
 label_settings = SubResource("LabelSettings_md43n")
 
 [node name="BreakableNumber" type="Label" parent="."]
+visible = false
 offset_left = -170.0
 offset_top = -525.0
 offset_right = -73.0

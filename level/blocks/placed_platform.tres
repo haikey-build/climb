@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ctk2r7qjsuf0l"]
+
+[ext_resource type="Shader" path="res://level/blocks/placed_platform.gdshader" id="1_digfq"]
+
+[resource]
+shader = ExtResource("1_digfq")
+shader_parameter/top_left_color = Vector4(1, 1, 1, 1)
+shader_parameter/bottom_right_color = Vector4(0.8, 0.7, 0.5, 1)

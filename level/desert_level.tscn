@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl7q5ig7ld66d"]
+
+[ext_resource type="Script" path="res://level/desert_level.gd" id="1_0mk17"]
+[ext_resource type="PackedScene" uid="uid://dc2b421wo8kwx" path="res://background/floating_platform.tscn" id="1_fk405"]
+[ext_resource type="PackedScene" uid="uid://blubiq053mo8n" path="res://char/desert_char.tscn" id="2_3cbxh"]
+
+[node name="DesertLevel" type="Node2D"]
+script = ExtResource("1_0mk17")
+
+[node name="FloatingPlatform" parent="." instance=ExtResource("1_fk405")]
+z_index = 2
+position = Vector2(-2, 139)
+
+[node name="FloatingPlatform2" parent="." instance=ExtResource("1_fk405")]
+position = Vector2(370, 21)
+
+[node name="DesertChar" parent="." instance=ExtResource("2_3cbxh")]
+position = Vector2(-4, -58)
+
+[node name="FloatingPlatform3" parent="." instance=ExtResource("1_fk405")]
+position = Vector2(1191, 1)
+
+[connection signal="set_platform_attempted" from="DesertChar" to="." method="_on_desert_char_set_platform_attempted"]

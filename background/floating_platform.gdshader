@@ -5,8 +5,8 @@ uniform float smoothness : hint_range(0.0, 1.0) = 0.25;
 uniform float wave_height : hint_range(0.0, 0.5) = 0.1;
 uniform float wave_frequency = 5.0;
 uniform float wave_speed = 1.0;
-uniform vec3 left_color : source_color = vec3(1.0, 1.0, 0.9);
-uniform vec3 right_color : source_color = vec3(0.9, 0.7, 0.6);
+uniform vec3 left_color : source_color = vec3(0.2, 0.15, 0.1);
+uniform vec3 right_color : source_color = vec3(0.1, 0.05, 0.0);
 
 void fragment() {
     vec2 uv = vec2(1.0, 1.0) - UV;
