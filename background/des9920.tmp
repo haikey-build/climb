@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkiupjnxtypyq"]
+
+[ext_resource type="Script" path="res://background/desert.gd" id="1_nfk8a"]
+
+[node name="Desert" type="Node2D"]
+script = ExtResource("1_nfk8a")

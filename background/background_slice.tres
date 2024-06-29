@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bmbvt6lcg6esp"]
+
+[ext_resource type="Shader" path="res://background/background_slice.gdshader" id="1_5jjtc"]
+
+[resource]
+shader = ExtResource("1_5jjtc")
+shader_parameter/num_steps = 7
+shader_parameter/cutoff_height = 0.5
