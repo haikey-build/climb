@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://be0dl4seydhre"]
+
+[ext_resource type="Shader" path="res://background/floating_platform.gdshader" id="1_0flls"]
+
+[resource]
+shader = ExtResource("1_0flls")
+shader_parameter/corner_size = Vector2(0, 0.3)
+shader_parameter/smoothness = 0.25
+shader_parameter/wave_height = 0.1
+shader_parameter/wave_frequency = 5.0
+shader_parameter/wave_speed = 1.0
+shader_parameter/left_color = Color(1, 1, 0.9, 1)
+shader_parameter/right_color = Color(0.9, 0.7, 0.6, 1)

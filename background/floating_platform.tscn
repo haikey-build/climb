@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc2b421wo8kwx"]
+
+[ext_resource type="Material" uid="uid://be0dl4seydhre" path="res://background/floating_platform.tres" id="1_dn8m7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jibag"]
+size = Vector2(97.1843, 50.2722)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_x1wbi"]
+
+[node name="FloatingPlatform" type="StaticBody2D"]
+scale = Vector2(2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.127989, -24.8639)
+shape = SubResource("RectangleShape2D_jibag")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 7
+material = ExtResource("1_dn8m7")
+scale = Vector2(97.297, 100)
+texture = SubResource("CanvasTexture_x1wbi")
