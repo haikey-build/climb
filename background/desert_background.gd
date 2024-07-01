@@ -8,18 +8,15 @@ var rng = RandomNumberGenerator.new()
 @onready var end_color = Color(.6, .4, 0.2, 1)
 
 var yVal_queue = []
-var queue_size = 5  # Number of recent values to consider
-var negative_scale_factor = 0.3  # Scale factor for negative values
+var queue_size = 5 
+var negative_scale_factor = 0.1
 
 func update_slices(yVal):
-	# Add new yVal to the queue
 	yVal_queue.push_back(yVal)
 	
-	# Keep only the last 'queue_size' values
 	if yVal_queue.size() > queue_size:
 		yVal_queue.pop_front()
 	
-	# Calculate the average of recent yVal values, with weaker negative values
 	var avg_yVal = 0.0
 	for val in yVal_queue:
 		if val > 0:
@@ -28,7 +25,6 @@ func update_slices(yVal):
 			avg_yVal += val
 	avg_yVal /= yVal_queue.size()
 	
-	# Use the average value for updating slice positions
 	for i in range(10):
 		var offset = avg_yVal * i * i / 1000
 		if offset < 0:
@@ -37,6 +33,7 @@ func update_slices(yVal):
 
 func _ready():
 	for i in range(10):
+		await get_tree().create_timer(0.3).timeout
 		var new_slice = slice_scene.instantiate()
 		add_child(new_slice)
 		_init_shader(new_slice)

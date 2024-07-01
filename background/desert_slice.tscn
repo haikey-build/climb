@@ -7,5 +7,6 @@
 
 [node name="DesertSlice" type="Sprite2D"]
 material = ExtResource("1_t5o1e")
+scale = Vector2(11.625, 11.625)
 texture = SubResource("CanvasTexture_mt8ll")
 script = ExtResource("2_x6twi")

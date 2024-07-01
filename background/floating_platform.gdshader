@@ -11,10 +11,8 @@ uniform vec3 right_color : source_color = vec3(0.1, 0.05, 0.0);
 void fragment() {
     vec2 uv = vec2(1.0, 1.0) - UV;
     
-    // Create a moving sine wave
     float wave = wave_height * sin(wave_frequency * UV.x + TIME * wave_speed);
     
-    // Adjust the vertical UV based on the wave
     vec2 wave_uv = vec2(uv.x, uv.y + wave);
     
     vec2 corner_distance = smoothstep(
@@ -25,15 +23,11 @@ void fragment() {
     
     float corner_mask =corner_distance.y;
     
-    // Fade from left color to right color
     float right_fade = smoothstep(0.0, 1.0, UV.x);
     
-    // Apply the corner mask only to alpha
     COLOR.a *= corner_mask;
     
-    // Interpolate between left and right colors based on x position
     vec3 color = mix(left_color, right_color, right_fade);
     
-    // Set the final color
     COLOR.rgb = color;
 }

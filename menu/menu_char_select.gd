@@ -1,6 +1,5 @@
 extends Node2D
 
-@onready var _explorer_scene = preload()
 
 @onready var _level_scene = preload("res://level/proto_level.tscn")
 @onready var _level

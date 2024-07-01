@@ -76,7 +76,8 @@ func _update_inventory_HUD_all():
 	_update_inventory_HUD(Climb.PlatformType.BREAKABLE)
 
 func _update_inventory_HUD(type):
-	_inventory_HUD[type].text = str(_inventory[type])
+	pass
+	#_inventory_HUD[type].text = str(_inventory[type])
 
 
 #func _set_char_camera():
