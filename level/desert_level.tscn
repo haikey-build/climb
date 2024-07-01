@@ -9,15 +9,10 @@ script = ExtResource("1_0mk17")
 
 [node name="FloatingPlatform" parent="." instance=ExtResource("1_fk405")]
 z_index = 2
-position = Vector2(-2, 139)
-
-[node name="FloatingPlatform2" parent="." instance=ExtResource("1_fk405")]
-position = Vector2(370, 21)
+position = Vector2(-2, 8)
 
 [node name="DesertChar" parent="." instance=ExtResource("2_3cbxh")]
-position = Vector2(-4, -58)
+position = Vector2(3, -132)
 
-[node name="FloatingPlatform3" parent="." instance=ExtResource("1_fk405")]
-position = Vector2(1326, -81)
-
+[connection signal="char_landed" from="DesertChar" to="." method="_on_desert_char_char_landed"]
 [connection signal="set_platform_attempted" from="DesertChar" to="." method="_on_desert_char_set_platform_attempted"]

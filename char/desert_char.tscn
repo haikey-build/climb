@@ -16,6 +16,7 @@ script = ExtResource("1_230j0")
 shape = SubResource("CapsuleShape2D_trj2w")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -150)
 
 [node name="DesertBackground" parent="." instance=ExtResource("3_4h6ug")]
 z_index = -1

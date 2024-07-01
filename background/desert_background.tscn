@@ -6,4 +6,5 @@
 script = ExtResource("1_2qye8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 position = Vector2(-7, 3)

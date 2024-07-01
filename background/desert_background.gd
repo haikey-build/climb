@@ -33,7 +33,6 @@ func update_slices(yVal):
 
 func _ready():
 	for i in range(10):
-		await get_tree().create_timer(0.3).timeout
 		var new_slice = slice_scene.instantiate()
 		add_child(new_slice)
 		_init_shader(new_slice)

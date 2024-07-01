@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal set_platform_attempted(pos, type)
 signal recall_platform_attempted()
+signal char_landed(platform)
 
 @onready var FPS = 60
 @onready var WALK_SPEED = 200
@@ -48,10 +49,20 @@ func _physics_process(delta):
 	
 	var collision = get_slide_collision(0)
 	if collision != null:
-		_type_standing_on = collision.get_collider().get_type()
+		_update_standing(collision.get_collider())
 	else:
-		_type_standing_on = Climb.PlatformType.NOTHING
+		_update_standing(null)
 	
 	_background.update_slices(velocity.y)
 
-
+func _update_standing(platform):
+	if platform == null:
+		_type_standing_on = Climb.PlatformType.NOTHING
+		return
+	
+	if _type_standing_on == platform.get_type():
+		return
+	
+	if _type_standing_on == Climb.PlatformType.NOTHING:
+		char_landed.emit(platform)
+		_type_standing_on = platform.get_type()
