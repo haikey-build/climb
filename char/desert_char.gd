@@ -11,7 +11,9 @@ const JUMP_VELOCITY = -1500
 @onready var _current_selected_platform_type = Climb.PlatformType.STANDARD
 @onready var _type_standing_on = Climb.PlatformType.STANDARD
 @onready var _background = $DesertBackground
+@onready var _platform_cooldown_timer = $PlatformCooldownTimer
 @onready var _air_jump = 1
+@onready var _can_place_platform = true
 
 
 func _cycle_platform_type():
@@ -38,7 +40,7 @@ func _physics_process(delta):
 			velocity.y = JUMP_VELOCITY
 			_air_jump = 0
 	if Input.is_action_just_pressed("set_platform"):
-		set_platform_attempted.emit(position, _current_selected_platform_type)
+		_attempt_set_platform()
 	if Input.is_action_just_pressed("recall_platform"):
 		recall_platform_attempted.emit()
 	if Input.is_action_just_pressed("swap_platform_type"):
@@ -58,7 +60,9 @@ func _physics_process(delta):
 	else:
 		_update_standing(null)
 	
-	_background.update_slices(velocity.y)
+	#_background.update_slices($Camera2D.velocity.y)
+	if not _can_place_platform:
+		_update_platform_cooldown_timer_viz()
 
 func _update_standing(platform):
 	if platform == null:
@@ -72,3 +76,17 @@ func _update_standing(platform):
 		char_landed.emit(platform)
 		_type_standing_on = platform.get_type()
 		_air_jump = 1
+
+func _attempt_set_platform():
+	if _can_place_platform:
+		_can_place_platform = false
+		set_platform_attempted.emit(position, _current_selected_platform_type)
+		_platform_cooldown_timer.start()
+
+func _on_platform_cooldown_timer_timeout():
+	_can_place_platform = true
+	$BlackMesh.scale.y = 0
+
+func _update_platform_cooldown_timer_viz():
+	var proportion = _platform_cooldown_timer.time_left / 3
+	$BlackMesh.scale.y = proportion * 16

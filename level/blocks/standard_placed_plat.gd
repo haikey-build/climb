@@ -14,3 +14,6 @@ func setup(type):
 func get_type():
 	return _type
 
+func get_id():
+	return -1
+

@@ -1,6 +1,6 @@
 extends Node2D
 
-var rng = RandomNumberGenerator.new()
+var _rng = RandomNumberGenerator.new()
 
 @onready var slice_scene = preload("res://background/desert_slice.tscn")
 @onready var slices = []
@@ -38,7 +38,7 @@ func _ready():
 		_init_shader(new_slice)
 		new_slice.scale.x = 2800
 		new_slice.scale.y = 1900
-		var pos = i * 120 - 5 * 120
+		var pos = i * 120 - 5 * 120 - 200
 		new_slice.position = Vector2(pos, pos)
 		new_slice.home_position = Vector2(pos, pos)
 		new_slice.move_to_front()
@@ -56,11 +56,11 @@ func _init_shader(slice):
 	var offset_multipliers = PackedFloat32Array()
 	
 	for i in range(5):
-		var random_x = rng.randf_range(0.05, 0.2)
-		var random_y = rng.randf_range(0.05, 0.2)
+		var random_x = _rng.randf_range(0.05, 0.2)
+		var random_y = _rng.randf_range(0.05, 0.2)
 		cutoffs.append(Vector2(random_x, random_y))
 		
-		var random_multiplier = rng.randf_range(0.01, 0.06)
+		var random_multiplier = _rng.randf_range(0.01, 0.06)
 		offset_multipliers.append(random_multiplier)
 	
 	shader_material.set_shader_parameter("cutoffs", cutoffs)

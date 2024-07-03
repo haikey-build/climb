@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://blubiq053mo8n"]
+[gd_scene load_steps=4 format=3 uid="uid://blubiq053mo8n"]
 
 [ext_resource type="Script" path="res://char/desert_char.gd" id="1_230j0"]
-[ext_resource type="PackedScene" uid="uid://bkiupjnxtypyq" path="res://background/desert_background.tscn" id="3_4h6ug"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_trj2w"]
 radius = 9.0
@@ -15,13 +14,19 @@ script = ExtResource("1_230j0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_trj2w")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -150)
-
-[node name="DesertBackground" parent="." instance=ExtResource("3_4h6ug")]
-z_index = -1
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+[node name="WhiteMesh" type="MeshInstance2D" parent="."]
 position = Vector2(0, 1.49011e-06)
 scale = Vector2(18, 16)
 mesh = SubResource("CapsuleMesh_nglbd")
+
+[node name="BlackMesh" type="MeshInstance2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 1.49011e-06)
+scale = Vector2(18, 1e-05)
+mesh = SubResource("CapsuleMesh_nglbd")
+
+[node name="PlatformCooldownTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="PlatformCooldownTimer" to="." method="_on_platform_cooldown_timer_timeout"]
