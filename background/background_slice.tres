@@ -4,5 +4,5 @@
 
 [resource]
 shader = ExtResource("1_5jjtc")
-shader_parameter/num_steps = 7
-shader_parameter/cutoff_height = 0.5
+shader_parameter/cutoffs = null
+shader_parameter/offset_multipliers = null
