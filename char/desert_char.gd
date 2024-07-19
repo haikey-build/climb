@@ -25,7 +25,6 @@ func _cycle_platform_type():
 		Climb.PlatformType.BREAKABLE:
 			_current_selected_platform_type = Climb.PlatformType.STANDARD
 
-
 func _physics_process(delta):
 	if Input.is_action_pressed("quit"):
 		get_tree().quit()

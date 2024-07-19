@@ -9,5 +9,6 @@ shader = ExtResource("1_t4ua3")
 
 [node name="Sprite2D" type="Sprite2D"]
 material = SubResource("ShaderMaterial_x5ftr")
+position = Vector2(200, 200)
 scale = Vector2(100, 100)
 texture = SubResource("CanvasTexture_ko75f")

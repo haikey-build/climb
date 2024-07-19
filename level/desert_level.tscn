@@ -8,24 +8,36 @@
 
 [node name="DesertLevel" type="Node2D"]
 script = ExtResource("1_0mk17")
-_theta_1 = -1.281
-_theta_2 = 0.27
-_r_1 = 320
-_r_2 = 520
+_r_1 = 345
+_r_2 = 510
 
 [node name="FloatingPlatform" parent="." instance=ExtResource("1_fk405")]
 z_index = 2
 
+[node name="DesertChar" parent="." instance=ExtResource("2_3cbxh")]
+position = Vector2(0, -200)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
 [node name="DesertCamera" type="Camera2D" parent="."]
 position = Vector2(0, -150)
+position_smoothing_speed = 2.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
 script = ExtResource("4_gbyc8")
 
 [node name="DesertBackground" parent="DesertCamera" instance=ExtResource("4_o7y5l")]
 z_index = -1
 position = Vector2(0, 150)
 
-[node name="DesertChar" parent="." instance=ExtResource("2_3cbxh")]
-position = Vector2(0, -200)
+[node name="FloatingPlatform2" parent="." instance=ExtResource("1_fk405")]
+visible = false
+z_index = 2
+position = Vector2(0, 133)
+scale = Vector2(35.505, 1)
 
 [connection signal="char_landed" from="DesertChar" to="." method="_on_desert_char_char_landed"]
 [connection signal="set_platform_attempted" from="DesertChar" to="." method="_on_desert_char_set_platform_attempted"]

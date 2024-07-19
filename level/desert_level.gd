@@ -6,8 +6,8 @@ extends Node2D
 @onready var _world_platforms = [$FloatingPlatform]
 @onready var _rng = RandomNumberGenerator.new()
 
-@export var _theta_1 = - 3 * PI / 4
-@export var _theta_2 = PI / 4
+@export var _theta_1 = -0.5#- 3 * PI / 4
+@export var _theta_2 = 0#PI / 4
 @export var _r_1 = 300
 @export var _r_2 = 400
 
@@ -40,10 +40,19 @@ func _on_desert_char_char_landed(platform):
 		add_child(new_platform)
 		new_platform.display_zone(_theta_1, _theta_2, _r_1, _r_2)
 		_world_platforms.push_back(new_platform)
-		_theta_1 = _rng.randf_range(- 3 * PI / 4 + 0.5, - 3 * PI / 4 + 2)
-		_theta_2 = _theta_1 + _rng.randf_range(0, 1)
-		_r_1 = _rng.randf_range(250, 400)
-		_r_2 = _r_1 + _rng.randf_range(20, 200)
+		_slow_rotate()
+		#_randomise_params()
+
+func _slow_rotate():
+	_theta_1 -= 0.01
+	_theta_2 -= 0.01
+
+
+func _randomise_params():
+	_theta_1 = _rng.randf_range(- 3 * PI / 4 + 0.5, - 3 * PI / 4 + 2)
+	_theta_2 = _theta_1 + _rng.randf_range(0, 1)
+	_r_1 = _rng.randf_range(250, 400)
+	_r_2 = _r_1 + _rng.randf_range(20, 200)
 
 func _get_random_platform_dummy():
 	var x = _rng.randf_range(-900, 960)

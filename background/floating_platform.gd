@@ -20,7 +20,7 @@ func display_zone(theta_1, theta_2, r_1, r_2):
 	add_child(polygon_node)
 	polygon_node.position = center
 	polygon_node.polygon = _calculate_annulus_vertices(center, r_1, r_2, theta_1, theta_2, segments)
-	polygon_node.color = Color(0.7, 0.8, 1, 0.7)
+	polygon_node.color = Color(0.7, 0.8, 1, 0.0)
 	polygon_node.scale.x = 0.5
 
 func remove_polygon():

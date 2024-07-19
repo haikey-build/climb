@@ -64,4 +64,4 @@ swap_platform_type={
 
 [rendering]
 
-environment/defaults/default_clear_color=Color(0.211765, 0.360784, 0.34902, 1)
+environment/defaults/default_clear_color=Color(0.0745098, 0.152941, 0.184314, 1)

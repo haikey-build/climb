@@ -11,27 +11,31 @@ var yVal_queue = []
 var queue_size = 5 
 var negative_scale_factor = 0.1
 
+
+
 func update_slices(yVal):
-	yVal_queue.push_back(yVal)
-	
-	if yVal_queue.size() > queue_size:
-		yVal_queue.pop_front()
-	
-	var avg_yVal = 0.0
-	for val in yVal_queue:
-		if val > 0:
-			avg_yVal += val * negative_scale_factor
-		else:
-			avg_yVal += val
-	avg_yVal /= yVal_queue.size()
-	
-	for i in range(10):
-		var offset = avg_yVal * i * i / 1000
-		if offset < 0:
-			offset *= negative_scale_factor
-		slices[i].position.y = slices[i].home_position.y + offset
+	pass
+	#yVal_queue.push_back(yVal)
+	#
+	#if yVal_queue.size() > queue_size:
+		#yVal_queue.pop_front()
+	#
+	#var avg_yVal = 0.0
+	#for val in yVal_queue:
+		#if val > 0:
+			#avg_yVal += val * negative_scale_factor
+		#else:
+			#avg_yVal += val
+	#avg_yVal /= yVal_queue.size()
+	#
+	#for i in range(10):
+		#var offset = avg_yVal * i * i / 1000
+		#if offset < 0:
+			#offset *= negative_scale_factor
+		#slices[i].position.y = slices[i].home_position.y + offset
 
 func _ready():
+	#position = Vector2(1000, 800)
 	for i in range(10):
 		var new_slice = slice_scene.instantiate()
 		add_child(new_slice)
