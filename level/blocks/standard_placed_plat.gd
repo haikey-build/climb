@@ -1,6 +1,7 @@
 extends StaticBody2D
 
-@onready var _type = Climb.PlatformType.STANDARD
+var _type = Climb.ObjectType.PLATFORM
+var _subtype = Climb.PlatformType.STANDARD
 
 func setup(type):
 	_type = type
@@ -13,6 +14,9 @@ func setup(type):
 
 func get_type():
 	return _type
+
+func get_subtype():
+	return _subtype
 
 func get_id():
 	return -1

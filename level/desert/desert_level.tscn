@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://blubiq053mo8n" path="res://char/player/desert_char.tscn" id="2_3cbxh"]
 [ext_resource type="Script" path="res://level/desert/DesertCamera.gd" id="4_gbyc8"]
 [ext_resource type="PackedScene" uid="uid://bkiupjnxtypyq" path="res://background/desert/desert_background.tscn" id="4_o7y5l"]
-[ext_resource type="PackedScene" uid="uid://b7tyn8jqg52lo" path="res://char/enemy/blob.tscn" id="6_o4b81"]
+[ext_resource type="PackedScene" uid="uid://fal1qtcarj7a" path="res://level/desert/proto_set_piece/desert_proto_set_piece.tscn" id="7_hf48q"]
 
 [node name="DesertLevel" type="Node2D"]
 script = ExtResource("1_0mk17")
@@ -43,8 +43,8 @@ script = ExtResource("4_gbyc8")
 z_index = -1
 position = Vector2(0, 150)
 
-[node name="Blob" parent="." instance=ExtResource("6_o4b81")]
-position = Vector2(401, -346)
+[node name="DesertProtoSetPiece" parent="." instance=ExtResource("7_hf48q")]
+position = Vector2(-1033, -10)
 
 [connection signal="char_landed" from="DesertChar" to="." method="_on_desert_char_char_landed"]
 [connection signal="set_platform_attempted" from="DesertChar" to="." method="_on_desert_char_set_platform_attempted"]
