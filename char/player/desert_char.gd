@@ -55,7 +55,12 @@ func _physics_process(delta):
 	
 	var collision = get_slide_collision(0)
 	if collision != null:
-		_update_standing(collision.get_collider())
+		var collider = collision.get_collider()
+		match(collider.get_type()):
+			Climb.ObjectType.PLATFORM:
+				_update_standing(collider)
+			Climb.ObjectType.BEING:
+				print('------hit being--------')
 	else:
 		_update_standing(null)
 	
@@ -68,12 +73,12 @@ func _update_standing(platform):
 		_type_standing_on = Climb.PlatformType.NOTHING
 		return
 	
-	if _type_standing_on == platform.get_type():
+	if _type_standing_on == platform.get_subtype():
 		return
 	
 	if _type_standing_on == Climb.PlatformType.NOTHING:
 		char_landed.emit(platform)
-		_type_standing_on = platform.get_type()
+		_type_standing_on = platform.get_subtype()
 		_air_jump = 1
 
 func _attempt_set_platform():

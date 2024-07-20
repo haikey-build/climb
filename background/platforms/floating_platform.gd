@@ -1,7 +1,8 @@
 extends StaticBody2D
 
+var _type = Climb.ObjectType.PLATFORM
+var _subtype = Climb.PlatformType.STANDARD
 var _id = 0
-@onready var _type = Climb.PlatformType.STANDARD
 var center = Vector2(0, 0)
 var segments = 50  
 var polygon_node = null 
@@ -14,6 +15,9 @@ func get_id():
 
 func get_type():
 	return _type
+
+func get_subtype():
+	return _subtype
 
 func display_zone(theta_1, theta_2, r_1, r_2):
 	polygon_node = Polygon2D.new()
