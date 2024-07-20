@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://blubiq053mo8n"]
 
-[ext_resource type="Script" path="res://char/desert_char.gd" id="1_230j0"]
+[ext_resource type="Script" path="res://char/player/desert_char.gd" id="1_230j0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_trj2w"]
 radius = 9.0

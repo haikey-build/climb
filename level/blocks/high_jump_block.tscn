@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxcaxq03un2d"]
 
 [ext_resource type="Script" path="res://level/blocks/high_jump_block.gd" id="1_nerlm"]
-[ext_resource type="Texture2D" uid="uid://bfkm6rgtvas4r" path="res://level/white-border-64.png" id="1_qobnl"]
+[ext_resource type="Texture2D" uid="uid://bfkm6rgtvas4r" path="res://level/proto/white-border-64.png" id="1_qobnl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_of0p4"]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfkm6rgtvas4r"
-path="res://.godot/imported/white-border-64.png-5ec350b4e865ec6d8f70f573c48ff361.ctex"
+uid="uid://bh4sw6tsc1jjo"
+path="res://.godot/imported/flag.webp-629cca5a558d7d513826b4a22901af14.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level/white-border-64.png"
-dest_files=["res://.godot/imported/white-border-64.png-5ec350b4e865ec6d8f70f573c48ff361.ctex"]
+source_file="res://level/proto/flag.webp"
+dest_files=["res://.godot/imported/flag.webp-629cca5a558d7d513826b4a22901af14.ctex"]
 
 [params]
 

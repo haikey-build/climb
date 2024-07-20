@@ -2,7 +2,7 @@ extends Node2D
 
 var _rng = RandomNumberGenerator.new()
 
-@onready var slice_scene = preload("res://background/desert_slice.tscn")
+@onready var slice_scene = preload("res://background/desert/desert_slice.tscn")
 @onready var slices = []
 @onready var start_color = Color(1, 1, 0.7, 1)
 @onready var end_color = Color(.6, .4, 0.2, 1)

@@ -27,13 +27,9 @@ func _update_offset():
 	var x_diff = 0
 	for val in _tracker_vel_history:
 		x_diff += (_tracker.position.x - val) / 80000
-	
 
 	var avg_velocity = (_tracker_vel_history[-1] - _tracker_vel_history[0]) / _tracker_vel_history.size()
 	
-	print(avg_velocity)
-	
-	# Determine the direction based on the threshold
 	if avg_velocity > _threshold:
 		_current_direction = 1
 		if _direction_change_counter < _direction_change_time:
@@ -44,15 +40,15 @@ func _update_offset():
 			_direction_change_counter -= 1
 	
 	var amount = s_curve_lerp(_offset_left.x, _offset_right.x, _direction_change_counter / _direction_change_time)
-	
-	print('amount: ', amount)
 
 	_offset = Vector2(amount, -120)
+
 
 func s_curve_lerp(start_value: float, end_value: float, alpha: float) -> float:
 	alpha = clamp(alpha, 0.0, 1.0)
 	var t = alpha * alpha * (3.0 - 2.0 * alpha)
 	return start_value + t * (end_value - start_value)
+
 
 func _process(delta):
 	_update_offset()
@@ -65,11 +61,6 @@ func _process(delta):
 	else:
 		position.y = lerp(position.y, target_position.y, 1.0 / 100)
 
-#func _process(delta):
-	#var target_position = _tracker.position + _offset
-	#
-	#position.x = lerp(position.x, target_position.x, 1.0 / 10)
-	#position.y = lerp(position.y, target_position.y, 1.0 / 10)
 
 func set_tracker(tracker):
 	_tracker = tracker

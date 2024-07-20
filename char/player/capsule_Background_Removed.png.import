@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh4sw6tsc1jjo"
-path="res://.godot/imported/flag.webp-3c41b31a03cb320eeeeca96786ea375b.ctex"
+uid="uid://r7jltp8e2ytc"
+path="res://.godot/imported/capsule_Background_Removed.png-20c3cfac6ac5e484ad2d5f69f07bb9a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level/flag.webp"
-dest_files=["res://.godot/imported/flag.webp-3c41b31a03cb320eeeeca96786ea375b.ctex"]
+source_file="res://char/player/capsule_Background_Removed.png"
+dest_files=["res://.godot/imported/capsule_Background_Removed.png-20c3cfac6ac5e484ad2d5f69f07bb9a4.ctex"]
 
 [params]
 

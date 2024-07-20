@@ -1,14 +1,14 @@
 extends Node2D
 
 @onready var _placed_platform_scene = preload("res://level/blocks/standard_placed_plat.tscn")
-@onready var _world_platform_scene = preload("res://background/floating_platform.tscn")
+@onready var _world_platform_scene = preload("res://background/platforms/floating_platform.tscn")
 @onready var _player_platforms = []
 @onready var _world_platforms = [$FloatingPlatform]
 @onready var _rng = RandomNumberGenerator.new()
 
-@export var _theta_1 = -0.5#- 3 * PI / 4
-@export var _theta_2 = 0#PI / 4
-@export var _r_1 = 300
+@export var _theta_1 = 0#- 3 * PI / 4
+@export var _theta_2 = -0.5#PI / 4
+@export var _r_1 = 350
 @export var _r_2 = 400
 
 func _ready():
