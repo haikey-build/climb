@@ -14,19 +14,21 @@ position = Vector2(548, -186)
 [node name="FloatingPlatform3" parent="." instance=ExtResource("1_x145i")]
 position = Vector2(-399, -386)
 
-[node name="Blob" parent="." instance=ExtResource("2_d12wi")]
+[node name="Blob1" parent="." instance=ExtResource("2_d12wi")]
 position = Vector2(548, -321)
 scale = Vector2(3, 3)
 
-[node name="Points" type="Node2D" parent="Blob"]
+[node name="Blob1Points" type="Node2D" parent="."]
+position = Vector2(548, -321)
+scale = Vector2(3, 3)
 
-[node name="Point1" type="Node2D" parent="Blob/Points"]
+[node name="Point1" type="Node2D" parent="Blob1Points"]
 
-[node name="Point2" type="Node2D" parent="Blob/Points"]
+[node name="Point2" type="Node2D" parent="Blob1Points"]
 position = Vector2(-104.667, -64)
 
-[node name="Point3" type="Node2D" parent="Blob/Points"]
+[node name="Point3" type="Node2D" parent="Blob1Points"]
 position = Vector2(-249.667, -63.3333)
 
-[node name="Point4" type="Node2D" parent="Blob/Points"]
+[node name="Point4" type="Node2D" parent="Blob1Points"]
 position = Vector2(-185, 65.6667)

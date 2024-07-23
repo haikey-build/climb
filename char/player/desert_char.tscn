@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://blubiq053mo8n"]
+[gd_scene load_steps=5 format=3 uid="uid://blubiq053mo8n"]
 
 [ext_resource type="Script" path="res://char/player/desert_char.gd" id="1_230j0"]
+[ext_resource type="PackedScene" uid="uid://ddwrema2ih862" path="res://char/ability/attack_area.tscn" id="2_vej3a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_trj2w"]
 radius = 9.0
@@ -28,5 +29,7 @@ mesh = SubResource("CapsuleMesh_nglbd")
 [node name="PlatformCooldownTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="AttackArea" parent="." instance=ExtResource("2_vej3a")]
 
 [connection signal="timeout" from="PlatformCooldownTimer" to="." method="_on_platform_cooldown_timer_timeout"]
