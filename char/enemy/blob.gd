@@ -31,8 +31,6 @@ func move_towards_target(delta):
 	var direction = (target - global_position).normalized()
 	var distance_to_target = global_position.distance_to(target)
 
-	print(distance_to_target)
-	
 	if distance_to_target < (speed * delta) * 10:
 		current_point_index = (current_point_index + 1) % points.size()
 	else:

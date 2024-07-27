@@ -1,74 +1,52 @@
 extends Node2D
 
 # Parameters
-var radius: float = 100.0
-var width: float = PI / 3 # Width of the section in radians
-var steps: int = 10 # Number of intermediate points
+var _inner_radius: float = 50.0
+var _outer_radius: float = 100.0
+var _arc_width: float = PI / 3 
+var _num_steps: int = 10 
 
 # References to the nodes
 @onready var polygon2d = $Polygon2D
 @onready var collision_polygon2d = $Area2D/CollisionPolygon2D
 
+
 func _ready():
-	set_process(true)
+	polygon2d.polygon = _get_arc_points(0)
+	collision_polygon2d.polygon = _get_arc_points(0)
+
 
 func _process(delta):
 	var mouse_position = get_global_mouse_position()
 	var look_angle = (mouse_position - global_position).angle()
-	
-	draw_hitbox(look_angle)
-	setup_collision(look_angle)
 
-func draw_hitbox(look_angle):
-	var points = []
-	
-	# Center point at (0, 0)
-	points.append(Vector2.ZERO)
-	
-	# Calculate the two outer points of the hitbox
-	var start_angle = look_angle - width / 2
-	var end_angle = look_angle + width / 2
-	
-	var start_point = Vector2(cos(start_angle) * radius, sin(start_angle) * radius)
-	var end_point = Vector2(cos(end_angle) * radius, sin(end_angle) * radius)
-	
-	points.append(start_point)
-	
-	# Intermediate points for better shape
-	var step = width / steps
-	for i in range(1, steps):
-		var angle = start_angle + i * step
-		var point = Vector2(cos(angle) * radius, sin(angle) * radius)
-		points.append(point)
-		
-	points.append(end_point)
-	
-	# Assign points to the Polygon2D
-	polygon2d.polygon = points
+	collision_polygon2d.rotation = look_angle
+	polygon2d.rotation = look_angle
 
-func setup_collision(look_angle):
+
+func _get_arc_points(look_angle):
 	var points = []
-	
-	# Center point at (0, 0)
-	points.append(Vector2.ZERO)
-	
-	# Calculate the two outer points of the hitbox
-	var start_angle = look_angle - width / 2
-	var end_angle = look_angle + width / 2
-	
-	var start_point = Vector2(cos(start_angle) * radius, sin(start_angle) * radius)
-	var end_point = Vector2(cos(end_angle) * radius, sin(end_angle) * radius)
-	
-	points.append(start_point)
-	
-	# Intermediate points for better shape
-	var step = width / steps
-	for i in range(1, steps):
-		var angle = start_angle + i * step
-		var point = Vector2(cos(angle) * radius, sin(angle) * radius)
+	var start_angle = look_angle - _arc_width / 2
+	var step_size = _arc_width / _num_steps
+
+	for i in range(_num_steps + 1):
+		var angle = start_angle + i * step_size
+		var point = Vector2(cos(angle) * _outer_radius, sin(angle) * _outer_radius)
 		points.append(point)
-		
-	points.append(end_point)
-	
-	# Assign points to the CollisionPolygon2D
-	collision_polygon2d.polygon = points
+
+	for i in range(_num_steps, -1, -1):
+		var angle = start_angle + i * step_size
+		var point = Vector2(cos(angle) * _inner_radius, sin(angle) * _inner_radius)
+		points.append(point)
+
+	return points
+
+
+func _on_area_2d_body_entered(body):
+	print('-------entered-------------')
+	print(body)
+
+
+func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	print('-------entered-------------')
+	print(body)
