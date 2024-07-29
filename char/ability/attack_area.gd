@@ -1,27 +1,58 @@
 extends Node2D
 
-# Parameters
+var _ABILITY_DURATION = 1000
+
 var _inner_radius: float = 50.0
 var _outer_radius: float = 100.0
 var _arc_width: float = PI / 3 
 var _num_steps: int = 10 
 
-# References to the nodes
-@onready var polygon2d = $Polygon2D
-@onready var collision_polygon2d = $Area2D/CollisionPolygon2D
+var _global_pos
+
+@onready var _polygon2d = $Polygon2D
+@onready var _collision_polygon2d = $Area2D/CollisionPolygon2D
+@onready var _cooldown_timer = $CooldownTimer
+@onready var _area2D = $Area2D
 
 
 func _ready():
-	polygon2d.polygon = _get_arc_points(0)
-	collision_polygon2d.polygon = _get_arc_points(0)
+	_polygon2d.polygon = _get_arc_points(0)
+	_collision_polygon2d.polygon = _get_arc_points(0)
+	set_process(false)
+	_turn_off()
 
-
-func _process(delta):
+func enact_ability():
+	_turn_on()
+	
 	var mouse_position = get_global_mouse_position()
 	var look_angle = (mouse_position - global_position).angle()
 
-	collision_polygon2d.rotation = look_angle
-	polygon2d.rotation = look_angle
+	_collision_polygon2d.rotation = look_angle
+	_polygon2d.rotation = look_angle
+
+	_global_pos = global_position
+
+func _physics_process(delta):
+	global_position = _global_pos
+
+func _process(delta):
+	global_position = _global_pos
+
+func _turn_on():
+	set_physics_process(true)
+	_area2D.set_monitoring(true)
+	_area2D.set_monitorable(true)
+	_polygon2d.set_visible(true)
+
+	_cooldown_timer.start()
+	
+
+func _turn_off():
+	position = Vector2(0, 0)
+	set_physics_process(false)
+	_area2D.set_monitoring(false)
+	_area2D.set_monitorable(false)
+	_polygon2d.set_visible(false)
 
 
 func _get_arc_points(look_angle):
@@ -50,3 +81,6 @@ func _on_area_2d_body_entered(body):
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	print('-------entered-------------')
 	print(body)
+
+func _on_cooldown_timer_timeout():
+	_turn_off()
