@@ -14,7 +14,8 @@ const JUMP_VELOCITY = -1500
 @onready var _platform_cooldown_timer = $PlatformCooldownTimer
 @onready var _air_jump = 1
 @onready var _can_place_platform = true
-@onready var _primary_ability = $AttackArea
+@onready var _primary_ability = $BasicMeleeAttackArea
+@onready var _secondary_ability = $BasicRangeAttack
 
 
 func _cycle_platform_type():
@@ -43,6 +44,8 @@ func _physics_process(delta):
 		_cycle_platform_type()
 	if Input.is_action_just_pressed("primary_ability"):
 		_primary_ability.enact_ability()
+	if Input.is_action_just_pressed("secondary_ability"):
+		_secondary_ability.enact_ability()
 	
 	velocity.x *= 0.75
 	velocity.y += 5000 * delta

@@ -1,3 +1,9 @@
+
+# ------------------------------
+# TODO
+# most of this code should be in the parent scene: basic melee attack
+# parent scene should spawn in one of these then kill it
+
 extends Node2D
 
 var _inner_radius: float = 50.0
@@ -22,16 +28,18 @@ func _ready():
 	_turn_off()
 
 func enact_ability():
-	if _available_to_enact:
-		_turn_on()
-		
-		var mouse_position = get_global_mouse_position()
-		var look_angle = (mouse_position - global_position).angle()
+	if !_available_to_enact:
+		return false
 
-		_collision_polygon2d.rotation = look_angle
-		_polygon2d.rotation = look_angle
+	_turn_on()
+	
+	var mouse_position = get_global_mouse_position()
+	var look_angle = (mouse_position - global_position).angle()
 
-		_global_pos = global_position
+	_collision_polygon2d.rotation = look_angle
+	_polygon2d.rotation = look_angle
+
+	_global_pos = global_position
 
 func _physics_process(delta):
 	global_position = _global_pos
@@ -77,12 +85,12 @@ func _get_arc_points(look_angle):
 
 
 func _on_area_2d_body_entered(body):
-	print('-------entered-------------')
+	print('-------body entered-------------')
 	print(body)
 
 
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	print('-------entered-------------')
+	print('-------body shape entered-------------')
 	print(body)
 
 func _on_cooldown_timer_timeout():

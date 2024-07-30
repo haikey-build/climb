@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn162mpy6k4jt"]
+
+[ext_resource type="Script" path="res://char/ability/basic_range_attack.gd" id="1_l8oir"]
+
+[node name="BasicRangeAttack" type="Node2D"]
+script = ExtResource("1_l8oir")
