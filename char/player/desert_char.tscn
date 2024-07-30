@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://blubiq053mo8n"]
 
 [ext_resource type="Script" path="res://char/player/desert_char.gd" id="1_230j0"]
-[ext_resource type="PackedScene" uid="uid://dn162mpy6k4jt" path="res://char/ability/basic_range_attack.tscn" id="2_2413n"]
-[ext_resource type="PackedScene" uid="uid://ddwrema2ih862" path="res://char/ability/basic_melee_attack_area.tscn" id="2_vej3a"]
+[ext_resource type="PackedScene" uid="uid://dn162mpy6k4jt" path="res://char/ability/basic_range/basic_range_attack.tscn" id="2_2413n"]
+[ext_resource type="PackedScene" uid="uid://cje6cfm0lkfsd" path="res://char/ability/basic_melee/basic_melee_attack.tscn" id="3_fuekk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_trj2w"]
 radius = 9.0
@@ -33,6 +33,6 @@ one_shot = true
 
 [node name="BasicRangeAttack" parent="." instance=ExtResource("2_2413n")]
 
-[node name="BasicMeleeAttackArea" parent="." instance=ExtResource("2_vej3a")]
+[node name="BasicMeleeAttack" parent="." instance=ExtResource("3_fuekk")]
 
 [connection signal="timeout" from="PlatformCooldownTimer" to="." method="_on_platform_cooldown_timer_timeout"]

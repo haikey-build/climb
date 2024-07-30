@@ -14,7 +14,7 @@ const JUMP_VELOCITY = -1500
 @onready var _platform_cooldown_timer = $PlatformCooldownTimer
 @onready var _air_jump = 1
 @onready var _can_place_platform = true
-@onready var _primary_ability = $BasicMeleeAttackArea
+@onready var _primary_ability = $BasicMeleeAttack
 @onready var _secondary_ability = $BasicRangeAttack
 
 

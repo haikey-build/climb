@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://ddwrema2ih862"]
 
-[ext_resource type="Script" path="res://char/ability/basic_melee_attack_area.gd" id="1_3rv8j"]
+[ext_resource type="Script" path="res://char/ability/basic_melee/basic_melee_attack_area.gd" id="1_cwlaj"]
 
 [node name="BasicMeleeAttackArea" type="Node2D"]
-script = ExtResource("1_3rv8j")
+script = ExtResource("1_cwlaj")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 
@@ -11,15 +11,10 @@ script = ExtResource("1_3rv8j")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 
-[node name="CooldownTimer" type="Timer" parent="."]
-wait_time = 0.3
-one_shot = true
-
 [node name="DurationTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+autostart = true
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
-[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
 [connection signal="timeout" from="DurationTimer" to="." method="_on_duration_timer_timeout"]
