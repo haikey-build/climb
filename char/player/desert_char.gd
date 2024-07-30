@@ -34,11 +34,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("right"):
 		velocity.x += delta * FPS * WALK_SPEED
 	if Input.is_action_just_pressed("jump"):
-		if is_on_floor():
-			velocity.y = JUMP_VELOCITY
-		elif _air_jump > 0:
-			velocity.y = JUMP_VELOCITY
-			_air_jump = 0
+		_handle_jump()
 	if Input.is_action_just_pressed("set_platform"):
 		_attempt_set_platform()
 	if Input.is_action_just_pressed("recall_platform"):
@@ -90,6 +86,13 @@ func _attempt_set_platform():
 		set_platform_attempted.emit(position, _current_selected_platform_type)
 		_platform_cooldown_timer.start()
 
+func _handle_jump():
+	if is_on_floor():
+		velocity.y = JUMP_VELOCITY
+	elif _air_jump > 0:
+		velocity.y = JUMP_VELOCITY
+		_air_jump = 0
+
 func _on_platform_cooldown_timer_timeout():
 	_can_place_platform = true
 	$BlackMesh.scale.y = 0
@@ -97,3 +100,4 @@ func _on_platform_cooldown_timer_timeout():
 func _update_platform_cooldown_timer_viz():
 	var proportion = _platform_cooldown_timer.time_left / 3
 	$BlackMesh.scale.y = proportion * 16
+

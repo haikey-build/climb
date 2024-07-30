@@ -1,17 +1,17 @@
 extends Node2D
 
-var _ABILITY_DURATION = 1000
-
 var _inner_radius: float = 50.0
 var _outer_radius: float = 100.0
 var _arc_width: float = PI / 3 
 var _num_steps: int = 10 
+var _available_to_enact = true
 
 var _global_pos
 
 @onready var _polygon2d = $Polygon2D
 @onready var _collision_polygon2d = $Area2D/CollisionPolygon2D
 @onready var _cooldown_timer = $CooldownTimer
+@onready var _duration_timer = $DurationTimer
 @onready var _area2D = $Area2D
 
 
@@ -22,15 +22,16 @@ func _ready():
 	_turn_off()
 
 func enact_ability():
-	_turn_on()
-	
-	var mouse_position = get_global_mouse_position()
-	var look_angle = (mouse_position - global_position).angle()
+	if _available_to_enact:
+		_turn_on()
+		
+		var mouse_position = get_global_mouse_position()
+		var look_angle = (mouse_position - global_position).angle()
 
-	_collision_polygon2d.rotation = look_angle
-	_polygon2d.rotation = look_angle
+		_collision_polygon2d.rotation = look_angle
+		_polygon2d.rotation = look_angle
 
-	_global_pos = global_position
+		_global_pos = global_position
 
 func _physics_process(delta):
 	global_position = _global_pos
@@ -39,11 +40,13 @@ func _process(delta):
 	global_position = _global_pos
 
 func _turn_on():
+	_available_to_enact = false
 	set_physics_process(true)
 	_area2D.set_monitoring(true)
 	_area2D.set_monitorable(true)
 	_polygon2d.set_visible(true)
 
+	_duration_timer.start()
 	_cooldown_timer.start()
 	
 
@@ -83,4 +86,7 @@ func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shap
 	print(body)
 
 func _on_cooldown_timer_timeout():
+	_available_to_enact = true
+
+func _on_duration_timer_timeout():
 	_turn_off()
