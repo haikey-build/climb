@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bmixjtdboilj1"]
 
-[ext_resource type="Script" path="res://level/blocks/standard_placed_plat.gd" id="1_xxjvq"]
-[ext_resource type="Material" uid="uid://ctk2r7qjsuf0l" path="res://level/blocks/placed_platform.tres" id="2_jbrda"]
+[ext_resource type="Script" path="res://char/ability/basic_platform/standard_placed_plat.gd" id="1_nbgc5"]
+[ext_resource type="Material" uid="uid://ctk2r7qjsuf0l" path="res://level/blocks/placed_platform.tres" id="2_55y2g"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_738e3"]
 radius = 0.28
@@ -13,10 +13,10 @@ radius = 6.0
 height = 146.0
 
 [node name="StandardPlacedPlat" type="StaticBody2D"]
-script = ExtResource("1_xxjvq")
+script = ExtResource("1_nbgc5")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-material = ExtResource("2_jbrda")
+material = ExtResource("2_55y2g")
 position = Vector2(-0.0467601, -0.0787504)
 rotation = 1.5708
 scale = Vector2(23.376, 20.77)
@@ -25,3 +25,9 @@ mesh = SubResource("CapsuleMesh_738e3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_f3oma")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

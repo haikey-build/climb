@@ -8,10 +8,11 @@ func setup(direction, speed, tracking_pos):
 	_direction = direction
 	_speed = speed
 	_tracking_pos = tracking_pos
+	position = _tracking_pos
 
 func _physics_process(delta):
 	_tracking_pos += delta * _speed * _direction
-	global_position = _tracking_pos
+	position = _tracking_pos
 
 
 func _on_duration_timer_timeout():

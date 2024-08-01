@@ -18,10 +18,7 @@ func setup(tracking_pos, look_angle):
 
 	_polygon2d.polygon = _get_arc_points(look_angle)
 	_collision_polygon2d.polygon = _get_arc_points(look_angle)
-
-
-func _physics_process(delta):
-	global_position = _tracking_pos
+	position = _tracking_pos
 
 
 func _get_arc_points(look_angle):

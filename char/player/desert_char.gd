@@ -11,15 +11,16 @@ const JUMP_VELOCITY = -1500
 @onready var _current_selected_platform_type = Climb.PlatformType.STANDARD
 @onready var _type_standing_on = Climb.PlatformType.STANDARD
 @onready var _background = $DesertBackground
-@onready var _platform_cooldown_timer = $PlatformCooldownTimer
 @onready var _air_jump = 1
-@onready var _can_place_platform = true
 @onready var _primary_ability = $BasicMeleeAttack
 @onready var _secondary_ability = $BasicRangeAttack
-@onready var _tertiary_ability = $BasicRangeAttack
+@onready var _tertiary_ability = $BasicPlatformAbility
 
 func _ready():
-	_primary_ability.set_level(get_parent())
+	var level = get_parent()
+	_primary_ability.set_level(level)
+	_secondary_ability.set_level(level)
+	_tertiary_ability.set_level(level)
 
 
 func _cycle_platform_type():
@@ -50,8 +51,6 @@ func _physics_process(delta):
 		_secondary_ability.enact_ability()
 	if Input.is_action_just_pressed("tertiary_ability"):
 		_tertiary_ability.enact_ability()
-	if Input.is_action_just_pressed("set_platform"):
-		_attempt_set_platform()
 	
 	velocity.x *= 0.75
 	velocity.y += 5000 * delta
@@ -73,8 +72,6 @@ func _physics_process(delta):
 		_update_standing(null)
 	
 	#_background.update_slices($Camera2D.velocity.y)
-	if not _can_place_platform:
-		_update_platform_cooldown_timer_viz()
 
 func _update_standing(platform):
 	if platform == null:
@@ -89,24 +86,9 @@ func _update_standing(platform):
 		_type_standing_on = platform.get_subtype()
 		_air_jump = 1
 
-func _attempt_set_platform():
-	if _can_place_platform:
-		_can_place_platform = false
-		set_platform_attempted.emit(position, _current_selected_platform_type)
-		_platform_cooldown_timer.start()
-
 func _handle_jump():
 	if is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	elif _air_jump > 0:
 		velocity.y = JUMP_VELOCITY
 		_air_jump = 0
-
-func _on_platform_cooldown_timer_timeout():
-	_can_place_platform = true
-	$BlackMesh.scale.y = 0
-
-func _update_platform_cooldown_timer_viz():
-	var proportion = _platform_cooldown_timer.time_left / 3
-	$BlackMesh.scale.y = proportion * 16
-

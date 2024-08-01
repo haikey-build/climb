@@ -4,3 +4,8 @@
 
 [node name="BasicMeleeAttack" type="Node2D"]
 script = ExtResource("1_c1vvw")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
