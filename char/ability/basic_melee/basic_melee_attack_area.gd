@@ -4,25 +4,20 @@ var _inner_radius: float = 50.0
 var _outer_radius: float = 100.0
 var _arc_width: float = PI / 3 
 var _num_steps: int = 10 
-var _available_to_enact = true
 
 var _tracking_pos
 var _look_angle
 
 @onready var _polygon2d = $Polygon2D
 @onready var _collision_polygon2d = $Area2D/CollisionPolygon2D
-@onready var _cooldown_timer = $CooldownTimer
-@onready var _duration_timer = $DurationTimer
-@onready var _area2D = $Area2D
 
 
-func setup(position, look_angle):
-	_tracking_pos = position
+func setup(tracking_pos, look_angle):
+	_tracking_pos = tracking_pos
 	_look_angle = look_angle
 
 	_polygon2d.polygon = _get_arc_points(look_angle)
 	_collision_polygon2d.polygon = _get_arc_points(look_angle)
-
 
 
 func _physics_process(delta):

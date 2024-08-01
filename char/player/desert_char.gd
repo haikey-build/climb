@@ -16,6 +16,10 @@ const JUMP_VELOCITY = -1500
 @onready var _can_place_platform = true
 @onready var _primary_ability = $BasicMeleeAttack
 @onready var _secondary_ability = $BasicRangeAttack
+@onready var _tertiary_ability = $BasicRangeAttack
+
+func _ready():
+	_primary_ability.set_level(get_parent())
 
 
 func _cycle_platform_type():
@@ -36,8 +40,6 @@ func _physics_process(delta):
 		velocity.x += delta * FPS * WALK_SPEED
 	if Input.is_action_just_pressed("jump"):
 		_handle_jump()
-	if Input.is_action_just_pressed("set_platform"):
-		_attempt_set_platform()
 	if Input.is_action_just_pressed("recall_platform"):
 		recall_platform_attempted.emit()
 	if Input.is_action_just_pressed("swap_platform_type"):
@@ -46,6 +48,10 @@ func _physics_process(delta):
 		_primary_ability.enact_ability()
 	if Input.is_action_just_pressed("secondary_ability"):
 		_secondary_ability.enact_ability()
+	if Input.is_action_just_pressed("tertiary_ability"):
+		_tertiary_ability.enact_ability()
+	if Input.is_action_just_pressed("set_platform"):
+		_attempt_set_platform()
 	
 	velocity.x *= 0.75
 	velocity.y += 5000 * delta
